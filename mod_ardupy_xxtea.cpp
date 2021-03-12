@@ -11,14 +11,14 @@ extern "C" {
 STATIC mp_obj_t xxtea_set_key(const mp_obj_t key_obj) {
     mp_check_self(mp_obj_is_str_or_bytes(key_obj));
     GET_STR_DATA_LEN(key_obj, key, key_len);
-    return mp_obj_new_bool(xxtea.setKey(key));
+    return mp_obj_new_bool(xxtea.setKey((const char*)key));
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(xxtea_set_key_obj, xxtea_set_key);
 
 STATIC mp_obj_t xxtea_encrypt(mp_obj_t data_obj) {
     mp_check_self(mp_obj_is_str_or_bytes(data_obj));
     GET_STR_DATA_LEN(data_obj, data, data_len);
-    char* result = xxtea.encrypt(data).c_str();
+    const char* result = xxtea.encrypt((const char*)data).c_str();
     return mp_obj_new_str(result, strlen(result));
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(xxtea_encrypt_obj, xxtea_encrypt);
@@ -26,7 +26,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(xxtea_encrypt_obj, xxtea_encrypt);
 STATIC mp_obj_t xxtea_decrypt(mp_obj_t data_obj) {
     mp_check_self(mp_obj_is_str_or_bytes(data_obj));
     GET_STR_DATA_LEN(data_obj, data, data_len);
-    char* result = xxtea.decrypt(data).c_str();
+    const char* result = xxtea.decrypt((const char*)data).c_str();
     return mp_obj_new_str(result, strlen(result));
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(xxtea_decrypt_obj, xxtea_decrypt);
