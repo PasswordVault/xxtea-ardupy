@@ -1,11 +1,11 @@
 /**
  */
-#include "py/obj.h"
-#include "py/runtime.h"
-
 #include "xxtea-lib/src/xxtea-lib.h"
 
 extern "C" {
+
+#include "py/obj.h"
+#include "py/runtime.h"
 
 STATIC mp_obj_t xxtea_set_key(mp_obj_t key_obj) {
     char* key = mp_obj_get_str(key_obj);
