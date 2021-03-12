@@ -6,7 +6,7 @@
         "url": "https://github.com/PasswordVault/xxtea-ardupy.git"
     },
     "dependencies": [{
-        "name": "xxtea Cryptography library for Arduino",
+        "name": "xxtea-lib",
         "url": "https://github.com/boseji/xxtea-lib.git"
     }]
 }
