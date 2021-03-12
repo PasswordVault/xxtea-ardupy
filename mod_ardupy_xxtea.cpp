@@ -5,6 +5,8 @@
 
 #include "xxtea-lib/src/xxtea-lib.h"
 
+extern "C" {
+
 STATIC mp_obj_t xxtea_set_key(mp_obj_t key_obj) {
     char* key = mp_obj_get_str(key_obj);
     return mp_obj_new_bool(xxtea.setKey(key));
@@ -39,3 +41,5 @@ const mp_obj_module_t xxtea_user_cmodule = {
 };
 
 MP_REGISTER_MODULE(MP_QSTR_xxtea, xxtea_user_cmodule, MODULE_SIMPLEFUNCTION_ENABLED);
+
+}
