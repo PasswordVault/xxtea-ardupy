@@ -18,7 +18,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(xxtea_set_key_obj, xxtea_set_key);
 STATIC mp_obj_t xxtea_encrypt(mp_obj_t data_obj) {
     mp_check_self(mp_obj_is_str_or_bytes(data_obj));
     GET_STR_DATA_LEN(data_obj, data, data_len);
-    const char* result = ardupy_wrapper_xxtea_encrypt((const char*)data).c_str();
+    const char* result = ardupy_wrapper_xxtea_encrypt((const char*)data);
     return mp_obj_new_str(result, strlen(result));
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(xxtea_encrypt_obj, xxtea_encrypt);
@@ -26,7 +26,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(xxtea_encrypt_obj, xxtea_encrypt);
 STATIC mp_obj_t xxtea_decrypt(mp_obj_t data_obj) {
     mp_check_self(mp_obj_is_str_or_bytes(data_obj));
     GET_STR_DATA_LEN(data_obj, data, data_len);
-    const char* result = ardupy_wrapper_xxtea_decrypt((const char*)data).c_str();
+    const char* result = ardupy_wrapper_xxtea_decrypt((const char*)data);
     return mp_obj_new_str(result, strlen(result));
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(xxtea_decrypt_obj, xxtea_decrypt);
