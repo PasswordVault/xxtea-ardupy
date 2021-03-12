@@ -32,25 +32,25 @@ xxtea_setKey(size_t n_args, const mp_obj_t* pos_args, mp_map_t* kw_args) {
     bool success = common_hal_xxtea_set_key(self, password);
     return mp_obj_new_bool(success);
 }
-MP_DEFINE_CONST_FUN_OBJ_KW(xxtea_setKey_obj, 1, xxteam_setKey);
+MP_DEFINE_CONST_FUN_OBJ_KW(xxtea_setKey_obj, 1, xxtea_setKey);
 
 mp_obj_t 
 xxtea_encrypt(size_t n_args, const mp_obj_t* pos_args, mp_map_t* kw_args) {
     abstract_module_t* self = (abstract_module_t*) pos_args[0];
     char* data = mp_obj_str(pos_args[1]);
     char* result = common_hal_xxtea_encrypt(self, data);
-    return mp_obj_new_str(result);
+    return mp_obj_new_str(result, strlen(result), true);
 }
-MP_DEFINE_CONST_FUN_OBJ_KW(xxtea_encrypt_obj, 1, xxteam_encrypt);
+MP_DEFINE_CONST_FUN_OBJ_KW(xxtea_encrypt_obj, 1, xxtea_encrypt);
 
 mp_obj_t 
 xxtea_decrypt(size_t n_args, const mp_obj_t* pos_args, mp_map_t* kw_args) {
     abstract_module_t* self = (abstract_module_t*) pos_args[0];
     char* data = mp_obj_str(pos_args[1]);
     char* result = common_hal_xxtea_decrypt(self, data);
-    return mp_obj_new_str(result);
+    return mp_obj_new_str(result, strlen(result), true);
 }
-MP_DEFINE_CONST_FUN_OBJ_KW(xxtea_decrypt_obj, 1, xxteam_decrypt);
+MP_DEFINE_CONST_FUN_OBJ_KW(xxtea_decrypt_obj, 1, xxtea_decrypt);
 
 const mp_rom_map_elem_t xxtea_locals_dict_table[] = {
     // instance methods

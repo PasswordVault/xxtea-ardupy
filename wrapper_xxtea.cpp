@@ -14,18 +14,18 @@ extern "C" {
 
 extern "C" {
     void common_hal_xxtea_construct(abstract_module_t* self) {
-        self->module = xxtea;
+        self->module = &xxtea;
     }
     void common_hal_xxtea_deinit(abstract_module_t* self) {
         // no op
     }
     bool common_hal_xxtea_set_key(abstract_module_t* self, char* password) {
-        return self->module->setKey(password);
+        return ((xxtea_c*)self->module)->setKey(password);
     }
     char* common_hal_xxtea_encrypt(abstract_module_t* self, char* data) {
-        return self->module->encrypt(data);
+        return ((xxtea_c*)self->module)->encrypt(data);
     } 
     char* common_hal_xxtea_decrypt(abstract_module_t* self, char* data) {
-        return self->module->decrypt(data);
+        return ((xxtea_c*)self->module)->decrypt(data);
     } 
 }
