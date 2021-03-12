@@ -7,9 +7,9 @@ extern "C" {
         return xxtea.setKey(key);
     }
     char* ardupy_wrapper_xxtea_encrypt(const char* data) {
-        return xxtea.encrypt(data);
+        return xxtea.encrypt(data).c_str();
     }
     char* ardupy_wrapper_xxtea_decrypt(const char* data) {
-        return xxtea.decrypt(data);
+        return xxtea.decrypt(data).c_str();
     }
 }
